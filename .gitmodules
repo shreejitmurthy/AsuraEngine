@@ -1,0 +1,6 @@
+[submodule "Asura/vendor/SDL"]
+	path = Asura/vendor/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "Asura/vendor/spdlog"]
+	path = Asura/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
