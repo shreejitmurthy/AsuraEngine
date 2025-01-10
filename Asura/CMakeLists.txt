@@ -12,7 +12,7 @@ add_subdirectory(vendor/spdlog)
 include_directories(
     vendor/
     vendor/glad
-    vendor/include/
+    vendor/sokol
 )
 
 find_package(OpenGL REQUIRED)
@@ -28,7 +28,6 @@ set(ASURA_SRC
 )
 
 set(DEP_SRC
-    vendor/glad/glad.c
 )
 
 add_executable(Asura ${ASURA_SRC} ${DEP_SRC})
