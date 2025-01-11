@@ -25,7 +25,7 @@ set(ASURA_LIBS
 
 set(ASURA_SRC
     # src/main.cpp
-    src/Test.cpp
+    src/Application.cpp
 )
 
 set(DEP_SRC
@@ -40,5 +40,5 @@ add_executable(Asura ${ASURA_SRC} ${DEP_SRC})
 target_link_libraries(AsuraStatic PUBLIC ${ASURA_LIBS})
 target_link_libraries(AsuraShared PUBLIC ${ASURA_LIBS})
 
-target_include_directories(AsuraStatic PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_include_directories(AsuraShared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(AsuraStatic PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Asura/)
+target_include_directories(AsuraShared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Asura/)
