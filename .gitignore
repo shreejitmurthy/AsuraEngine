@@ -1,4 +1,5 @@
 .DS_Store
+.vscode/
 Asura/build/
 Asura/.DS_Store
 Sandbox/build/
