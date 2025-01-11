@@ -1,3 +1,7 @@
+/*
+    Kept here as a reference for using Asura's dependencies, for now, not needed.
+*/
+
 #include <iostream>
 
 #include <SDL3/SDL.h>
@@ -39,9 +43,7 @@ int main() {
     sg_swapchain swapchain = {
         .width = screenWidth,
         .height = screenHeight,
-        .sample_count = 0,
         .color_format = SG_PIXELFORMAT_RGBA8,
-        .depth_format = SG_PIXELFORMAT_NONE,
     };
 
     spdlog::info("ASURA::Initialised graphics");
