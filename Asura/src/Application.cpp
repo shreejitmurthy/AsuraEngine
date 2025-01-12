@@ -1,18 +1,15 @@
 #include "Application.hpp"
-#include <cstdio>
+
+#include <spdlog/spdlog.h>
 
 namespace Asura {
-    Application::Application()
-    {
+    Application::Application() {
     }
 
-    Application::~Application()
-    {
-        
+    Application::~Application() {  
     }
     
-    void Application::Run() 
-    {
-        printf("Hello from Asura!\n");
+    void Application::Run() {
+        spdlog::info("Hello from Asura!");
     }
 }
