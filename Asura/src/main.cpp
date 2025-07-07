@@ -7,10 +7,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-#define SOKOL_GFX_IMPL
-#define SOKOL_GLCORE
-#include <sokol_gfx.h>
-#include <sokol_log.h>
+#include <glad/glad.h>
 
 #include <spdlog/spdlog.h>
 
@@ -30,21 +27,7 @@ int main() {
     SDL_GLContext ctx = SDL_GL_CreateContext(window);
     bool open = true;
 
-    sg_desc desc;
-    sg_setup(&desc);
-
-    sg_pass_action pass_action = (sg_pass_action) {
-        .colors[0] = {
-            .load_action = SG_LOADACTION_CLEAR,
-            .clear_value = { 0.2f, 0.3f, 0.3f, 1.0f }
-        }
-    };
-
-    sg_swapchain swapchain = {
-        .width = screenWidth,
-        .height = screenHeight,
-        .color_format = SG_PIXELFORMAT_RGBA8,
-    };
+    gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress);
 
     spdlog::info("ASURA::Initialised graphics");
 
@@ -70,12 +53,8 @@ int main() {
             }
         }
 
-        sg_begin_pass((sg_pass){
-            .action = pass_action,
-            .swapchain = swapchain
-        });
-        sg_end_pass();
-        sg_commit();  // Commit so we can be notified about the end/start of a frame (maybe useful later)
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
 
         SDL_GL_SwapWindow(window);
     }
