@@ -9,6 +9,7 @@ add_subdirectory(../Asura AsuraBuild)
 
 # Add Sandbox source files
 set(SANDBOX_SRC
+#    ../Asura/src/main.cpp
     SandboxApp.cpp
 )
 
@@ -16,7 +17,7 @@ set(SANDBOX_SRC
 add_executable(Sandbox ${SANDBOX_SRC})
 
 # Link only one of these
-target_link_libraries(Sandbox PRIVATE AsuraStatic)
+target_link_libraries(Sandbox PUBLIC AsuraStatic)
 # target_link_libraries(Sandbox PRIVATE AsuraShared)
 
 # Include Asura's public headers
