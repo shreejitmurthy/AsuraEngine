@@ -1,5 +1,7 @@
 .DS_Store
 .vscode/
+.idea/
+Sandbox/cmake-build-debug/
 Asura/build/
 Asura/.DS_Store
 Sandbox/build/
