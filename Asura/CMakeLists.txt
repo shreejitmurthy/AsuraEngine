@@ -17,7 +17,7 @@ include_directories(
 find_package(OpenGL REQUIRED)
 
 set(ASURA_LIBS
-    OpenGL::GL
+    "-framework OpenGL"
     SDL3::SDL3
     spdlog
 )
