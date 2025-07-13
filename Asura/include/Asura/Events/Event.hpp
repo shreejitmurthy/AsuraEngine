@@ -2,6 +2,8 @@
 
 #include "Asura/Core.hpp"
 
+#include <ostream>
+
 // https://www.youtube.com/watch?v=xnopUoZbMEk&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=9
 namespace Asura {
     enum class EventType {
@@ -39,7 +41,8 @@ namespace Asura {
         virtual const char* GetName() const = 0;
         virtual int GetCategoryFlags() const = 0;
 
-        
+        virtual std::string ToString() const { return GetName(); }
+
         inline bool IsInCategory(EventCategory category) {
             return GetCategoryFlags() & category;
         }
@@ -63,5 +66,9 @@ namespace Asura {
     private:
         Event& _event;
     };
+
+    inline std::ostream& operator<<(std::ostream& os, const Event& e) {
+        return os << e.ToString();
+    }
 
 }
