@@ -12,6 +12,7 @@ add_subdirectory(vendor/spdlog)
 include_directories(
     vendor/
     vendor/glad
+    "include/"
 )
 
 find_package(OpenGL REQUIRED)
@@ -42,3 +43,8 @@ target_link_libraries(AsuraShared PUBLIC ${ASURA_LIBS})
 
 target_include_directories(AsuraStatic PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Asura/)
 target_include_directories(AsuraShared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Asura/)
+
+target_precompile_headers(AsuraStatic
+  PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:${CMAKE_CURRENT_SOURCE_DIR}/include/aspch.h>
+)
