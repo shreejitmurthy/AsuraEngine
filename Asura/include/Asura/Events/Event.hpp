@@ -1,8 +1,10 @@
 #pragma once
 
-#include "Asura/Core.hpp"
+#include "../Core.hpp"
 
 #include <ostream>
+#include <queue>
+#include <functional>
 
 // https://www.youtube.com/watch?v=xnopUoZbMEk&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=9
 namespace Asura {
@@ -71,4 +73,24 @@ namespace Asura {
         return os << e.ToString();
     }
 
+    class ASURA_API EventBus {
+    public:
+        using EventCallbackFn = std::function<void(Event&)>;
+
+        void PushEvent(Event* e) {
+            m_Queue.push(e);
+        }
+
+        void DispatchAll(const EventCallbackFn& callback) {
+            while (!m_Queue.empty()) {
+                Event* e = m_Queue.front();
+                m_Queue.pop();
+                callback(*e);
+                delete e;
+            }
+        }
+
+    private:
+        std::queue<Event*> m_Queue;
+    };
 }
