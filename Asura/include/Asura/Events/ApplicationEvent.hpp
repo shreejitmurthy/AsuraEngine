@@ -6,14 +6,14 @@
 #include <sstream>
 
 namespace Asura {
-    class ASURA_API WindowCloseEvent : Event {
+    class ASURA_API WindowCloseEvent : public Event {
     public:
         WindowCloseEvent() {}
         EVENT_CLASS_TYPE(WindowClose)
         EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
-    class ASURA_API WindowResizeEvent : Event {
+    class ASURA_API WindowResizeEvent : public Event {
     public:
         WindowResizeEvent(unsigned int w, unsigned int h) : _width(w), _height(h) {}
 
