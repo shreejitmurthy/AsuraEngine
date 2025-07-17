@@ -7,7 +7,7 @@
 
 namespace Asura {
     // KEYBOARD
-    class ASURA_API KeyEvent : Event {
+    class ASURA_API KeyEvent : public Event {
     public:
         inline std::uint32_t GetKeyCode() const { return _keyCode; }
         EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
@@ -16,7 +16,7 @@ namespace Asura {
         std::uint32_t _keyCode;
     };
 
-    class ASURA_API KeyDownEvent : KeyEvent {
+    class ASURA_API KeyDownEvent : public KeyEvent {
     public:
         KeyDownEvent(std::uint32_t keycode, int repeatCount) : KeyEvent(keycode), _repeatCount(repeatCount) {}
         inline int GetRepeatCount() const { return _repeatCount; }
@@ -26,7 +26,7 @@ namespace Asura {
         int _repeatCount;
     };
 
-    class ASURA_API KeyReleasedEvent : KeyEvent {
+    class ASURA_API KeyReleasedEvent : public KeyEvent {
     public:
         KeyReleasedEvent(std::uint32_t keycode) : KeyEvent(keycode) {}
 
@@ -34,7 +34,7 @@ namespace Asura {
     };
 
     // MOUSE
-    class ASURA_API MouseMovedEvent : Event {
+    class ASURA_API MouseMovedEvent : public Event {
     public:
         MouseMovedEvent(float x, float y) : _mouseX(x), _mouseY(y) {}
         
@@ -48,7 +48,7 @@ namespace Asura {
         float _mouseRelX, _mouseRelY;
     };
 
-    class ASURA_API MouseButtonEvent : Event {
+    class ASURA_API MouseButtonEvent : public Event {
     public:
         inline std::uint8_t GetMouseButton() const { return _button; }
         EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
@@ -59,14 +59,14 @@ namespace Asura {
     };
 
     // SDL: bool down = true
-    class ASURA_API MouseButtonDownEvent : MouseButtonEvent {
+    class ASURA_API MouseButtonDownEvent : public MouseButtonEvent {
     public:
         MouseButtonDownEvent(std::uint8_t button, float x, float y) : MouseButtonEvent(button, x, y) {}
         EVENT_CLASS_TYPE(MouseButtonPressed)
     };
 
     // SDL: bool down = false
-    class ASURA_API MouseButtonReleasedEvent : MouseButtonEvent {
+    class ASURA_API MouseButtonReleasedEvent : public MouseButtonEvent {
     public:
         MouseButtonReleasedEvent(std::uint8_t button, float x, float y) : MouseButtonEvent(button, x, y) {}
         EVENT_CLASS_TYPE(MouseButtonReleased)
