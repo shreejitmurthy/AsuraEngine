@@ -4,13 +4,13 @@
 #if defined(__APPLE__) && defined(__MACH__)
     #define ASURA_API __attribute__((visibility("default")))
     #define AS_PLATFORM_MACOS
-// #elif _WIN64
-//     #ifdef AS_BUILD_DLL
-//         #define ASURA_API __declspec(dllexport)
-//     #else
-//         #define ASURA_API __declspec(dllimport)
-//     #endif
-//     #define AS_PLATFORM_WIN64
+#elif _WIN64
+    #ifdef AS_BUILD_DLL
+        #define ASURA_API __declspec(dllexport)
+    #else
+        #define ASURA_API __declspec(dllimport)
+    #endif
+    #define AS_PLATFORM_WIN64
 #else
     /* 
      * We'll only support macOS since that's the main development environment. 

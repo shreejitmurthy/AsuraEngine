@@ -4,7 +4,7 @@
 
 extern Asura::Application* Asura::CreateApplication();
 
-int main(int argc, char* argv[]) {
+int main(int argc, char** argv) {
     auto app = Asura::CreateApplication();
     app->Run();
     delete app;
